@@ -11,9 +11,7 @@ trait HasAttributes
 {
     public static function getAttribute(self $enum, $attribute): ?string
     {
-        /** @var Enum $enum */
-        $ref             = new ReflectionClassConstant(self::class, $enum->name);
-        $classAttributes = $ref->getAttributes($attribute);
+        $classAttributes = new ReflectionClassConstant(self::class, $enum->name)->getAttributes($attribute);
 
         // If no attribute is found, return the enum value
         if ($classAttributes === []) {
