@@ -1,5 +1,5 @@
 {
-    "name": "pelmered/filament-money-field",
+    "name": "pelmered/enums",
     "type": "library",
     "license": "MIT",
     "autoload": {
