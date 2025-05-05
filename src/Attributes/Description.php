@@ -3,6 +3,7 @@
 namespace Pelmered\Enums\Attributes;
 
 use Attribute;
+use BackedEnum;
 
 #[Attribute]
 class Description
@@ -13,5 +14,8 @@ class Description
         public string $description,
     ) {}
 
-    public static function fallbackTransformer(Enum $enum) {}
+    public static function fallbackTransformer(BackedEnum $enum) 
+    {
+        return null;
+    }
 }

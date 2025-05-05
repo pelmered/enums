@@ -24,20 +24,24 @@ trait HasAttributes
             return null;
         }
 
-        return $classAttributes[0]->newInstance()->{Description::NAME};
+        $instance = $classAttributes[0]->newInstance();
+        $nameConstant = $attribute::NAME;
+
+        // Return the property based on the attribute's NAME constant
+        return $instance->{$nameConstant};
     }
 
-    private static function getTitle(self $enum): string
+    public static function getTitle(self $enum): ?string
     {
         return self::getAttribute($enum, Title::class);
     }
 
-    private static function getHelperText(self $enum): string
+    public static function getHelperText(self $enum): ?string
     {
         return self::getAttribute($enum, HelperText::class);
     }
 
-    private static function getDescription(self $enum): string
+    public static function getDescription(self $enum): ?string
     {
         return self::getAttribute($enum, Description::class);
     }
