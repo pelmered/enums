@@ -6,25 +6,29 @@ use ArchTech\Enums\InvokableCases;
 use ArchTech\Enums\Metadata;
 use ArchTech\Enums\Names;
 use ArchTech\Enums\Values;
+use PhpStaticAnalysis\Attributes\Returns;
 
 trait EnumHelpers
 {
-    use HasAttributes, InvokableCases, Metadata, Names, Values;
+    use HasAttributes;
+    use InvokableCases;
+    use Metadata;
+    use Names;
+    use Values;
 
-    /**
-     * @return array<string,string>
-     */
-    public static function asSelectArray(): array
+    #[Returns('array<string,string>')]
+    public static function labels(): array
     {
-        /** @var array<string,string> $values */
-        $values = collect(self::cases())
-            ->map(function ($enum): array {
-                return [
-                    'name'  => self::getDescription($enum),
-                    'value' => $enum->value,
-                ];
-            })->toArray();
+        $cases = self::cases();
 
-        return $values;
+        // Basically a Laravel Arr::mapWithKeys function, be we don't depend on Laravel
+        return array_reduce($cases, static function ($carry, $case) {
+            return array_merge($carry, [$case->value => ucfirst($case->value)]);
+        }, []);
+    }
+
+    public static function select(): array
+    {
+        return self::labels();
     }
 }
