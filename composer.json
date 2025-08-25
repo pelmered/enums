@@ -22,7 +22,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.4",
-        "php-static-analysis/attributes": "^0.3.1|^0.4.0",
+        "php-static-analysis/attributes": "^0.3.1|^0.4.0|^0.5.0",
         "archtechx/enums": "^1.1"
     },
     "require-dev": {
@@ -31,7 +31,7 @@
         "pestphp/pest": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.0",
         "phpstan/phpstan": "^1.4|^2.1",
-        "php-static-analysis/phpstan-extension": "^0.3.1|^0.4.0",
+        "php-static-analysis/phpstan-extension": "^0.3.1|^0.4.0|^0.5.0",
         "spatie/laravel-ray": "^1.39",
         "rector/rector": "^2.0"
     },
